@@ -1,0 +1,14 @@
+name: 'Setup XY'
+description: 'Install and Configure a xy toolchain'
+branding:
+  icon: package
+  color: blue
+runs:
+  using: "composite"
+  steps:
+    - name: Download and Install xyc
+      run: |
+        curl "https://github.com/xy-org/pyxyc/releases/download/continuous/xyc-x86_64" --create-dirs -Lo ~/.xyc/bin/xyc
+        chmod u+x ~/.xyc/bin/xyc
+        echo "$HOME/.xyc/bin" >> "$GITHUB_PATH"
+      shell: sh

@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest  # Ubuntu 20.04 (ubuntu-20.04)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+      - run: xyc --help
